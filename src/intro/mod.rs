@@ -27,6 +27,15 @@ pub fn bubble_sort_1a<T: PartialOrd, const N: usize>(ns: &mut [T; N]) {
     }
 }
 
+pub fn count_ones(mut n: u32) -> u32 {
+    let mut ones = 0;
+    while 0 < n {
+        ones += 1 & n;
+        n >>= 1;
+    }
+    ones
+}
+
 #[cfg(test)]
 mod tests {
     fn is_sorted<T: PartialOrd, const N: usize>(ns: &[T; N]) -> bool {
@@ -43,5 +52,13 @@ mod tests {
         let mut ns = [6, 5, 4, 3, 2, 1];
         super::bubble_sort_1a(&mut ns);
         assert!(is_sorted(&ns), "unsorted: {:?}", ns);
+    }
+
+    #[test]
+    fn count_ones() {
+        assert_eq!(0, super::count_ones(0));
+        assert_eq!(1, super::count_ones(1));
+        assert_eq!(1, super::count_ones(2));
+        assert_eq!(6, super::count_ones(441));
     }
 }
