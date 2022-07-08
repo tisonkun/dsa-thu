@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: apache/skywalking-eyes@main
+      - uses: apache/skywalking-eyes/header@main
         with:
           config: tools/ci/licenserc.yml
 
